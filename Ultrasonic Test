@@ -1,0 +1,39 @@
+void setup() {​
+
+ pinMode(2, OUTPUT);​
+
+ pinMode(4, INPUT);​
+
+ Serial.begin(9600);​
+
+}​
+
+void loop() {​
+
+ digitalWrite(2, LOW);​
+
+ delayMicroseconds(4);​
+
+ digitalWrite(2, HIGH);​
+
+ delayMicroseconds(10);​
+
+ digitalWrite(2, LOW);​
+
+​
+
+ long signal = pulseIn(4, HIGH);​
+
+ long inches = signal / 74 / 2; ​
+
+ long cm = signal / 29 / 2; ​
+
+ Serial.print(cm);​
+
+ Serial.println("cm");​
+
+ Serial.print(inches);​
+
+ Serial.println("inches");​
+
+ delay(100);​
