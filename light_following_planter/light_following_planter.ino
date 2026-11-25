@@ -16,7 +16,7 @@
     Nano 5V and GND -> the breadboard rails; bridge bottom rails to top rails
 */
 
-#define EXERCISE 1
+#define EXERCISE 3
 
 #include <Servo.h>
 
@@ -86,12 +86,19 @@ const int DEADBAND = 30;
 void setup() {
   tray.attach(9);
   tray.write(angle);
+  Serial.begin(9600);
 }
 
 void loop() {
   int left  = analogRead(A0);
   int right = analogRead(A1);
   int diff  = left - right;
+
+  Serial.print(left);
+  Serial.print("\t");
+  Serial.print(right);
+  Serial.print("\t");
+  Serial.println(diff);
 
   if (diff > DEADBAND) angle--;
   else if (diff < -DEADBAND) angle++;
